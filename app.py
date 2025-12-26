@@ -4,14 +4,13 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Expenses Dashboard", layout="wide")
 
-# ---------------- SIDEBAR MENU ----------------
 st.sidebar.title("☰ Menu")
 menu = st.sidebar.radio(
     "Navigate",
     ["Dashboard", "Add Expense", "Summary"]
 )
 
-# ---------------- SESSION STATE ----------------
+
 if "data" not in st.session_state:
     st.session_state.data = pd.DataFrame(
         columns=["Date", "Category", "Amount"]
@@ -19,7 +18,6 @@ if "data" not in st.session_state:
 
 df = st.session_state.data
 
-# ---------------- DASHBOARD PAGE ----------------
 if menu == "Dashboard":
     st.title("💸 Daily Expenses Dashboard")
 
@@ -42,7 +40,6 @@ if menu == "Dashboard":
         st.subheader("📊 Category-wise Spending")
         st.bar_chart(category_sum)
 
-# ---------------- ADD EXPENSE PAGE ----------------
 elif menu == "Add Expense":
     st.title("➕ Add New Expense")
 
@@ -68,7 +65,7 @@ elif menu == "Add Expense":
         )
         st.success("Expense Added Successfully ✅")
 
-# ---------------- SUMMARY PAGE ----------------
+
 elif menu == "Summary":
     st.title("📈 Expense Summary")
 
